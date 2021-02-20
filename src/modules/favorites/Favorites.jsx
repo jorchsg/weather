@@ -7,7 +7,9 @@ const Favorites = () => {
     return (
         <>
             <Menu />
-            <Header />
+            <Header
+                title='Your Favorites'
+            />
             <div className="container">
                 <h1>Mi Favorites</h1>
             </div>

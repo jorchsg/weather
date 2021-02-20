@@ -11,7 +11,9 @@ const Weather = () => {
         <Fragment>
             <Menu />
             <div className="container">
-                <Header />
+                <Header
+                    title="Check The Current Weather"
+                />
                 <div className="row">
                     <WeatherList
 

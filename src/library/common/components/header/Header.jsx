@@ -1,15 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './header.scss';
 
-const Header = () => {
+const Header = ({ title }) => {
 
     return (
         <>
             <div className="container">
-                <h1 className="title">Weather Today</h1>
+                <h1 className="title">{title}</h1>
             </div>
         </>
     )
+}
+
+Header.propTypes = {
+    title: PropTypes.string.isRequired
 }
 
 export default Header;
