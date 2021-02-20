@@ -1,11 +1,15 @@
 import React from 'react'
+import Menu from '../../library/common/components/menu/Menu';
 
 const Favorites = () => {
 
     return (
-        <div>
-            <h1>Hello From Favorites</h1>
-        </div>
+        <>
+            <Menu />
+            <div className="container">
+                <h1>Mi Favorites</h1>
+            </div>
+        </>
     )
 }
 

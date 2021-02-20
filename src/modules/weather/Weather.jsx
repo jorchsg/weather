@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Menu from '../../library/common/components/menu/Menu';
 
 const Weather = () => {
 
     return (
-        <div>
-            <h1>Hello From Weather</h1>
-        </div>
+        <Fragment>
+            <Menu />
+            <div className="container">
+                <h1>The Weather Today</h1>
+            </div>
+        </Fragment>
     )
 }
 
