@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <>
             <div className="container">
-                <h1 className="title">Welcome To Your Favorite Weather Page</h1>
+                <h1 className="title">Weather Today</h1>
             </div>
         </>
     )
