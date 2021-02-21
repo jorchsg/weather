@@ -3,8 +3,8 @@ import { Card, Button } from 'react-bootstrap';
 
 const WeatherList = (props) => {
 
-    // Extract values with destructuing
-    const { cities } = props;
+    // Destructuging Props
+    const { cities, addToFavorites, selectCity } = props;
 
     return (
         <>
@@ -34,8 +34,20 @@ const WeatherList = (props) => {
                                             className="float-right"
                                             variant="outline-danger"
                                             size="sm"
+                                            onClick={
+                                                () => { addToFavorites(element) }
+                                            }
                                         >Add &#x2661;
-                                            </Button>
+                                        </Button>
+                                        <Button
+                                            className="float-left"
+                                            variant="outline-primary"
+                                            size="sm"
+                                            onClick={
+                                                () => { selectCity(element.id) }
+                                            }
+                                        >Select
+                                        </Button>
                                     </Card.Body>
                                 </Card>
                             )

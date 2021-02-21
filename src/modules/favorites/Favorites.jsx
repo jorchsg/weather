@@ -2,7 +2,12 @@ import React from 'react'
 import Header from '../../library/common/components/header/Header';
 import Menu from '../../library/common/components/menu/Menu';
 
-const Favorites = () => {
+const Favorites = ({ }) => {
+
+
+    const favoritos = JSON.parse(localStorage.getItem('MyFavorites'));
+    console.log(favoritos);
+
 
     return (
         <>

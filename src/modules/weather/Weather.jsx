@@ -10,6 +10,35 @@ const Weather = () => {
     // State 
     const [cities, setCities] = useState([]);
 
+    const [city, setCity] = useState({})
+
+    const [favorites, setFavorites] = useState(JSON.parse(localStorage?.MyFavorites || '[]'));
+
+
+    const addToFavorites = (city) => {
+
+        const data = favorites.map((ele => ele.id === city.id));
+        const exist = data.includes(true);
+        if (exist) return;
+
+        setFavorites([
+            ...favorites,
+            city
+        ]);
+
+    }
+
+    localStorage.setItem('MyFavorites', JSON.stringify(favorites));
+
+    console.log(favorites);
+
+
+    const selectCity = async (id) => {
+        const citySelected = cities.filter(element => element.id === id)
+        setCity(citySelected);
+    }
+
+
     useEffect(() => {
 
         const getCities = async () => {
@@ -51,11 +80,12 @@ const Weather = () => {
                 <div className="row">
                     <WeatherList
                         cities={cities}
+                        addToFavorites={addToFavorites}
+                        selectCity={selectCity}
                     />
                     <WeatherDetail
-
+                        city={city}
                     />
-
                 </div>
             </div>
         </Fragment>
