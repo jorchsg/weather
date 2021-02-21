@@ -8,11 +8,11 @@ import WeatherDetail from './WeatherDetail';
 const Weather = () => {
 
     // State 
-    const [cities, setCities] = useState({});
+    const [cities, setCities] = useState([]);
 
     useEffect(() => {
 
-        const requestAPI = async () => {
+        const getCities = async () => {
 
             if (cities) {
                 //Bounding Box Variables
@@ -32,18 +32,14 @@ const Weather = () => {
                 const response = await fetch(url);
                 const result = await response.json();
 
-                setCities(result);
+                setCities(result.list);
             }
 
         }
 
-        requestAPI();
+        getCities();
 
     }, [])
-
-    console.log(cities);
-    console.log(cities.list);
-
 
     return (
         <Fragment>
@@ -54,12 +50,12 @@ const Weather = () => {
                 />
                 <div className="row">
                     <WeatherList
-
+                        cities={cities}
                     />
-
                     <WeatherDetail
 
                     />
+
                 </div>
             </div>
         </Fragment>
