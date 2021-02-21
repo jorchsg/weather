@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../../library/common/components/header/Header';
 import Menu from '../../library/common/components/menu/Menu';
 import FavoritesItem from './FavoritesItem';
@@ -7,10 +7,22 @@ import { Toast } from 'react-bootstrap';
 
 const Favorites = ({ }) => {
 
+    // State that storage favorites
+    const [favorites, setFavorites] = useState([])
 
-    // Get Favorites From Local Storage
-    const favoritos = JSON.parse(localStorage.getItem('MyFavorites'));
-    console.log(favoritos);
+    // Load Favorites When Page Load
+    useEffect(() => {
+
+        const getFavorites = () => {
+            // Get Favorites From Local Storage
+            const favoritos = JSON.parse(localStorage.getItem('MyFavorites'));
+            setFavorites(favoritos);
+        }
+
+        getFavorites();
+
+
+    }, [])
 
 
     return (
@@ -26,7 +38,7 @@ const Favorites = ({ }) => {
                 <div className="row">
                     <div className="col">
                         {
-                            favoritos.map(({ id, name, main, weather }) => {
+                            favorites.map(({ id, name, main, weather }) => {
                                 return (
                                     <Toast
                                         key={id}
