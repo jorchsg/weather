@@ -8,7 +8,7 @@ import { Toast } from 'react-bootstrap';
 const Favorites = ({ }) => {
 
     // State that storage favorites
-    const [favorites, setFavorites] = useState([])
+    const [favorites, setFavorites] = useState([]);
 
     // Load Favorites When Page Load
     useEffect(() => {
@@ -21,10 +21,14 @@ const Favorites = ({ }) => {
 
         getFavorites();
 
-
     }, [])
 
+    const removeFavorite = (id) => {
+        const favoriteSelected = favorites.filter(elem => elem.id !== id)
+        setFavorites(favoriteSelected);
+    }
 
+    if (!favorites) return null;
     return (
         <>
             <Menu />
@@ -37,6 +41,7 @@ const Favorites = ({ }) => {
                 <h1>Mi Favorites Cities</h1>
                 <div className="row">
                     <div className="col">
+
                         {
                             favorites.map(({ id, name, main, weather }) => {
                                 return (
@@ -60,7 +65,10 @@ const Favorites = ({ }) => {
 
                 <div className="row">
                     <div className="col">
-                        <FavoritesItem />
+                        <FavoritesItem
+                            favorites={favorites}
+                            removeFavorite={removeFavorite}
+                        />
                     </div>
                 </div>
 
