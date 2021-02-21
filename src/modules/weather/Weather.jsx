@@ -15,6 +15,7 @@ const Weather = () => {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage?.MyFavorites || '[]'));
 
 
+    // Add To Favorites Info
     const addToFavorites = (city) => {
 
         const data = favorites.map((ele => ele.id === city.id));
@@ -28,6 +29,7 @@ const Weather = () => {
 
     }
 
+    // Adding to Local Storage
     localStorage.setItem('MyFavorites', JSON.stringify(favorites));
 
     console.log(favorites);

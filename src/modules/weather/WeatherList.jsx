@@ -18,7 +18,7 @@ const WeatherList = (props) => {
                                 <Card
                                     className="text-center m-3 bg-light"
                                     border="info"
-                                    style={{ width: '14rem' }}
+                                    style={{ width: '20rem' }}
                                     key={element.id}
                                 >
                                     <Card.Body>
