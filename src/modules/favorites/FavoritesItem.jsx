@@ -1,57 +1,40 @@
 import React from 'react';
-import { Table, ListGroup, Button } from 'react-bootstrap';
+import { Col, ListGroup, Button } from 'react-bootstrap';
 
 const FavoritesItem = ({ removeFavorite, favorites }) => {
 
-    console.log(favorites)
-
     if (!favorites) return null;
+
+    const title = favorites.length === 0 ? '' : "Manage Favorites";
 
     return (
         <>
-            <h1>Manage Your Favorites Items</h1>
-
-            {
-                favorites.map((ele) => {
-                    return (
-                        <ListGroup
-                            key={ele.id}
-                        >
-                            <ListGroup.Item>
-                                {ele.main.temp} <span> {ele.name}</span>
-                                <Button
-                                    variant="danger"
-                                    className="mx-2"
-                                    onClick={() => removeFavorite(ele.id)}
-                                >Delete
-                                </Button>
-                            </ListGroup.Item>
-                        </ListGroup>
-
-                        /* <Table
-                            striped bordered hover size="sm"
-                            className="mt-2"
-                            id={ele.id}
-                        >
-                            <thead>
-                                <tr>
-                                    <th>Units</th>
-                                    <th>City</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{ele.main.temp}</td>
-                                    <td>{ele.name}</td>
-                                    <td>Eliminar</td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                        </div> */
-                    )
-                })
-            }
+            <Col xs={12} md={6} lg={4}>
+                <h2 className="mt-3">{title}</h2>
+                {
+                    favorites.map(({ id, name, main, }) => {
+                        return (
+                            <ListGroup
+                                className="mb-2"
+                                key={id}
+                            >
+                                <ListGroup.Item>
+                                    <h6 className="text-center">Detail</h6>
+                                    <strong>Units: </strong> {main.temp} &#8451;
+                                    <br></br>
+                                    <strong>City: </strong><span>{name}</span>
+                                    <Button
+                                        variant="danger"
+                                        className="float-right"
+                                        onClick={() => removeFavorite(id)}
+                                    >Delete
+                                    </Button>
+                                </ListGroup.Item>
+                            </ListGroup>
+                        )
+                    })
+                }
+            </Col>
 
         </>
     )

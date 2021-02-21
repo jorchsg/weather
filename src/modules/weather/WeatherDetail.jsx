@@ -9,51 +9,50 @@ const WeatherDetail = ({ city }) => {
 
     return (
         <>
-            <div className="col-lg-6 col-sm-12">
-                <h1 className="text-center">Weather Detail</h1>
+            <h1 className="text-center">Details</h1>
+            {
+                data.map(({ id, name, main }) => {
+                    return (
+                        <Card
+                            className="text-center mb-3 bg-light"
+                            border="info"
+                            key={id}
+                        >
+                            <Card.Body>
+                                <Card.Subtitle
+                                    className="mb-2 text-muted mb-3 text-dark"
+                                >The weather today at {name}
+                                </Card.Subtitle>
+                                <Card.Title
+                                    className="text-dark"
+                                >{main.temp}  &#8451;
+                            </Card.Title>
+                                <ListGroup variant="secondary">
+                                    <div className="row">
+                                        <div className="col-6 col-xs-12">
+                                            <ListGroup.Item variant="secondary">
+                                                Max: {main.temp_max} &#8451;
+                                            </ListGroup.Item>
+                                            <ListGroup.Item variant="secondary">
+                                                Min: {main.temp_min}  &#8451;
+                                            </ListGroup.Item>
+                                        </div>
+                                        <div className="col-6 col-xs-12">
+                                            <ListGroup.Item variant="secondary">
+                                                Humidity: {main.temp_max}%
+                                            </ListGroup.Item>
+                                            <ListGroup.Item variant="secondary">
+                                                Wind: {main.humidity} mph
+                                            </ListGroup.Item>
+                                        </div>
+                                    </div>
+                                </ListGroup>
+                            </Card.Body>
+                        </Card>
+                    )
+                })
+            }
 
-                <div className="row">
-                    <div className="col-lg-12 col-sm-12">
-
-                        {
-                            data.map(({ id, name, main }) => {
-                                return (
-                                    <Card
-                                        className="text-center mb-3 bg-light"
-                                        border="info"
-                                        key={id}
-                                    >
-                                        <Card.Body>
-                                            <Card.Subtitle
-                                                className="mb-2 text-muted mb-3 text-dark"
-                                            >The weather today at {name}
-                                            </Card.Subtitle>
-                                            <Card.Title
-                                                className="text-dark"
-                                            >{main.temp} &#8457;
-                                        </Card.Title>
-                                            <ListGroup variant="secondary">
-                                                <div className="row">
-                                                    <div className="col-6 col-xs-12">
-                                                        <ListGroup.Item variant="secondary">Max:{main.temp_max}</ListGroup.Item>
-                                                        <ListGroup.Item variant="secondary">Min:{main.temp_min}</ListGroup.Item>
-
-                                                    </div>
-                                                    <div className="col-6 col-xs-12">
-                                                        <ListGroup.Item variant="secondary">Humidity: {main.temp_max}</ListGroup.Item>
-                                                        <ListGroup.Item variant="secondary">Wind:{main.humidity}</ListGroup.Item>
-                                                    </div>
-                                                </div>
-                                            </ListGroup>
-                                        </Card.Body>
-                                    </Card>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
-
-            </div>
         </>
     )
 }

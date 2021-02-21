@@ -3,7 +3,7 @@ import Header from '../../library/common/components/header/Header';
 import Menu from '../../library/common/components/menu/Menu';
 import FavoritesItem from './FavoritesItem';
 
-import { Toast } from 'react-bootstrap';
+import { Toast, Container, Row, Col } from 'react-bootstrap';
 
 const Favorites = ({ }) => {
 
@@ -29,6 +29,9 @@ const Favorites = ({ }) => {
     }
 
     if (!favorites) return null;
+
+    const title = favorites.length === 0 ? "Witouth Favorites" : 'Favorites List'
+
     return (
         <>
             <Menu />
@@ -36,12 +39,11 @@ const Favorites = ({ }) => {
                 title='Your Favorites'
             />
 
-            <div className="container">
+            <Container>
+                <Row>
+                    <Col xs={12} md={6}>
 
-                <h1>Mi Favorites Cities</h1>
-                <div className="row">
-                    <div className="col">
-
+                        <h2 className="mt-3">{title}</h2>
                         {
                             favorites.map(({ id, name, main, weather }) => {
                                 return (
@@ -53,26 +55,21 @@ const Favorites = ({ }) => {
                                             <small>{weather[0].description}</small>
                                         </Toast.Header>
                                         <Toast.Body>
-                                            <h1 className="text-center">{main.temp}</h1>
+                                            <h1 className="text-center">{main.temp} <strong>&#8451;</strong></h1>
                                         </Toast.Body>
                                     </Toast>
                                 )
                             })
                         }
 
-                    </div>
-                </div>
+                    </Col>
+                    <FavoritesItem
+                        favorites={favorites}
+                        removeFavorite={removeFavorite}
+                    />
+                </Row>
 
-                <div className="row">
-                    <div className="col">
-                        <FavoritesItem
-                            favorites={favorites}
-                            removeFavorite={removeFavorite}
-                        />
-                    </div>
-                </div>
-
-            </div>
+            </Container>
 
         </>
     )

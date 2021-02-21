@@ -1,8 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react';
+// Components
 import Header from '../../library/common/components/header/Header';
 import Menu from '../../library/common/components/menu/Menu';
 import WeatherList from './WeatherList';
 import WeatherDetail from './WeatherDetail';
+
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 const Weather = () => {
@@ -75,21 +78,25 @@ const Weather = () => {
     return (
         <Fragment>
             <Menu />
-            <div className="container">
+            <Container>
                 <Header
-                    title="Weather Near To Your Location"
+                    title="Weather Today"
                 />
-                <div className="row">
-                    <WeatherList
-                        cities={cities}
-                        addToFavorites={addToFavorites}
-                        selectCity={selectCity}
-                    />
-                    <WeatherDetail
-                        city={city}
-                    />
-                </div>
-            </div>
+                <Row>
+                    <Col xs={12} md={6}>
+                        <WeatherList
+                            cities={cities}
+                            addToFavorites={addToFavorites}
+                            selectCity={selectCity}
+                        />
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <WeatherDetail
+                            city={city}
+                        />
+                    </Col>
+                </Row>
+            </Container>
         </Fragment>
     )
 }
