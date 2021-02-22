@@ -1,2 +1,9 @@
-@import "../../../../resources/styles/mixins.scss";
-@import "../../../../resources/styles/variables.scss";
+// @import "../../../../resources/styles/mixins.scss";
+// @import "../../../../resources/styles/variables.scss";
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }

@@ -7,6 +7,7 @@ import WeatherDetail from './WeatherDetail';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
+import '../../index.scss';
 
 const Weather = () => {
 

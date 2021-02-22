@@ -1,5 +1,6 @@
 import React from 'react';
-import { Col, ListGroup, Button } from 'react-bootstrap';
+import { Col, ListGroup, Button, Row } from 'react-bootstrap';
+import './favorites.scss';
 
 const FavoritesItem = ({ removeFavorite, favorites }) => {
 
@@ -9,33 +10,40 @@ const FavoritesItem = ({ removeFavorite, favorites }) => {
 
     return (
         <>
-            <Col xs={12} md={6} lg={4}>
-                <h2 className="mt-3">{title}</h2>
-                {
-                    favorites.map(({ id, name, main, }) => {
-                        return (
-                            <ListGroup
-                                className="mb-2"
-                                key={id}
-                            >
-                                <ListGroup.Item>
-                                    <h6 className="text-center">Detail</h6>
-                                    <strong>Units: </strong>
-                                    {Math.round(main.temp)} &#8451;
-                                    <br></br>
-                                    <strong>City: </strong><span>{name}</span>
-                                    <Button
-                                        variant="danger"
-                                        className="float-right"
-                                        onClick={() => removeFavorite(id)}
-                                    >Delete
+            <Row>
+                <Col>
+                    <h2 className="mt-3 text-center">{title}</h2>
+                    <div className="card-grid">
+                        {
+                            favorites.map(({ id, name, main, }) => {
+                                return (
+                                    <ListGroup
+                                        className="m-2"
+                                        style={{ width: '20rem' }}
+                                        key={id}
+                                    >
+                                        <ListGroup.Item>
+                                            <h6 className="text-center">Detail</h6>
+                                            <strong>Units: </strong>
+                                            {Math.round(main.temp)} &#8451;
+                                            <br></br>
+                                            <strong>City: </strong><span>{name}</span>
+                                            <br></br>
+                                            <Button
+                                                variant="danger" size="sm"
+                                                className="float-right mt-2"
+                                                onClick={() => removeFavorite(id)}
+                                            >Delete
                                     </Button>
-                                </ListGroup.Item>
-                            </ListGroup>
-                        )
-                    })
-                }
-            </Col>
+                                        </ListGroup.Item>
+                                    </ListGroup>
+                                )
+                            })
+                        }
+                    </div>
+                </Col>
+            </Row>
+
 
         </>
     )
