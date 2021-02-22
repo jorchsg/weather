@@ -61,7 +61,7 @@ const FavoritesList = ({ }) => {
 
                 {/* Search Form */}
                 <Form>
-                    <Form.Group>
+                    <Form.Group className="m-2">
                         <Form.Label><h5>Search</h5></Form.Label>
                         <Form.Control
                             type="input"
@@ -76,7 +76,6 @@ const FavoritesList = ({ }) => {
                 {/* Favorites List */}
                 <Row>
                     <Col xs={12}>
-
                         <h2 className="mt-3 text-center">{title}</h2>
                         <div className="card-grid">
                             {
