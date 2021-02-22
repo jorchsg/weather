@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
 
-
 const WeatherDetail = ({ city }) => {
 
     // Convert Obtject to an Array
@@ -9,43 +8,38 @@ const WeatherDetail = ({ city }) => {
 
     return (
         <>
-            <h1 className="text-center">Details</h1>
+            <h1 className="text-center mb-2">Details</h1>
             {
-                data.map(({ id, name, main }) => {
+                data.map(({ id, name, main, weather }) => {
                     return (
                         <Card
-                            className="text-center mb-3 bg-light"
-                            border="info"
+                            className="text-center"
                             key={id}
                         >
-                            <Card.Body>
-                                <Card.Subtitle
-                                    className="mb-2 text-muted mb-3 text-dark"
-                                >The weather today at {name}
-                                </Card.Subtitle>
-                                <Card.Title
-                                    className="text-dark"
-                                >{Math.round(main.temp)}  &#8451;
-                            </Card.Title>
-                                <ListGroup variant="secondary">
-                                    <div className="row">
-                                        <div className="col-6 col-xs-12">
-                                            <ListGroup.Item variant="secondary">
-                                                Max: {Math.round(main.temp_max)} &#8451;
-                                            </ListGroup.Item>
-                                            <ListGroup.Item variant="secondary">
-                                                Min: {Math.round(main.temp_min)}  &#8451;
-                                            </ListGroup.Item>
-                                        </div>
-                                        <div className="col-6 col-xs-12">
-                                            <ListGroup.Item variant="secondary">
-                                                Humidity: {Math.round(main.humidity)}%
-                                            </ListGroup.Item>
-                                            <ListGroup.Item variant="secondary">
-                                                Wind: {main.humidity} mph
-                                            </ListGroup.Item>
-                                        </div>
-                                    </div>
+                            <Card.Header as="h5">{name}</Card.Header>
+                            <Card.Title
+                                className="text-dark mb-0 mt-2"
+                            > {Math.round(main.temp)}  &#8451;
+                                </Card.Title>
+                            <Card.Subtitle
+                                className="text-dark mt-2"
+                            >{weather[0].main}
+                            </Card.Subtitle>
+
+                            <Card.Body className="pt-1">
+                                <ListGroup variant="flush">
+                                    <ListGroup.Item>
+                                        <strong>Max:</strong> {Math.round(main.temp_max)} &#8451;<br></br>
+                                    </ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <strong>Min:</strong> {Math.round(main.temp_min)}  &#8451;<br></br>
+                                    </ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <strong>Humidity:</strong> {Math.round(main.humidity)}%<br></br>
+                                    </ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <strong>Wind: </strong>{main.humidity} mph
+                                    </ListGroup.Item>
                                 </ListGroup>
                             </Card.Body>
                         </Card>

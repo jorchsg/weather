@@ -42,11 +42,9 @@ const Weather = () => {
 
 
     useEffect(() => {
-
         const getCities = async () => {
-
-            if (cities) {
-                //Bounding Box Variables
+            try {
+                //Bounding Box Variables For Determined Area
                 const longLeft = -118;
                 const latBottom = 32;
                 const longRight = -116;
@@ -64,6 +62,8 @@ const Weather = () => {
                 const result = await response.json();
 
                 setCities(result.list);
+            } catch (err) {
+                console.log(err.message);
             }
 
         }
@@ -80,14 +80,14 @@ const Weather = () => {
                     title="Weather Today"
                 />
                 <Row>
-                    <Col xs={12} md={6}>
+                    <Col xs={12} md={7}>
                         <WeatherList
                             cities={cities}
                             addToFavorites={addToFavorites}
                             selectCity={selectCity}
                         />
                     </Col>
-                    <Col xs={12} md={6}>
+                    <Col xs={12} md={5}>
                         <WeatherDetail
                             city={city}
                         />

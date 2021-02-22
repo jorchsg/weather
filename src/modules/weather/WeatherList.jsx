@@ -9,23 +9,25 @@ const WeatherList = (props) => {
 
     return (
         <>
-            <h1 className="text-center">Current Weather</h1>
+            <h1 className="text-center mb-2">Current Weather</h1>
 
             <div className="card-grid">
                 {
                     cities.map((city) => {
                         return (
                             <Card
-                                className="text-center m-3 bg-light"
-                                border="info"
-                                style={{ width: '14.5rem' }}
+                                onClick={
+                                    () => { selectCity(city.id) }
+                                }
+                                className="text-center m-2"
+                                style={{ width: '18rem' }}
                                 key={city.id}
                             >
                                 <Card.Body>
                                     <Card.Title
-                                        className="text-primary"
-                                    >{Math.round(city.main.temp)} &#8451;
-                                </Card.Title>
+                                        className="text-secondary"
+                                    ><strong>{Math.round(city.main.temp)} &#8451;</strong>
+                                    </Card.Title>
                                     <Card.Subtitle
                                         className="mb-2 text-muted mb-3 text-dark"
                                     >{city.name}
@@ -34,11 +36,8 @@ const WeatherList = (props) => {
                                         className="float-right"
                                         variant="primary"
                                         size="sm"
-                                        onClick={
-                                            () => { selectCity(city.id) }
-                                        }
                                     >More Info
-                                </Button>
+                                    </Button>
                                     <Button
                                         className="float-left"
                                         variant="outline-danger"

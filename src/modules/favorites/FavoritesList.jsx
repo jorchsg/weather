@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Header from '../../library/common/components/header/Header';
 import Menu from '../../library/common/components/menu/Menu';
 import FavoritesItem from './FavoritesItem';
-import './favorites.scss';
+import '../.././index.scss';
 
 import { Toast, Container, Row, Col, Form } from 'react-bootstrap';
 
@@ -91,9 +91,9 @@ const FavoritesList = ({ }) => {
                                                 <small>{weather[0].description}</small>
                                             </Toast.Header>
                                             <Toast.Body>
-                                                <h1 className="text-center">
+                                                <h6 className="text-center">
                                                     {Math.round(main.temp)}
-                                                    <strong> &#8451;</strong></h1>
+                                                    <strong> &#8451;</strong></h6>
                                             </Toast.Body>
                                         </Toast>
                                     )

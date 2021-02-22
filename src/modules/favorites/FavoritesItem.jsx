@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, ListGroup, Button, Row } from 'react-bootstrap';
-import './favorites.scss';
+import '../.././index.scss';
 
 const FavoritesItem = ({ removeFavorite, favorites }) => {
 
@@ -23,7 +23,7 @@ const FavoritesItem = ({ removeFavorite, favorites }) => {
                                         key={id}
                                     >
                                         <ListGroup.Item>
-                                            <h6 className="text-center">Detail</h6>
+                                            <h5 className="text-center">Detail</h5>
                                             <strong>Units: </strong>
                                             {Math.round(main.temp)} &#8451;
                                             <br></br>
@@ -34,7 +34,7 @@ const FavoritesItem = ({ removeFavorite, favorites }) => {
                                                 className="float-right mt-2"
                                                 onClick={() => removeFavorite(id)}
                                             >Delete
-                                    </Button>
+                                            </Button>
                                         </ListGroup.Item>
                                     </ListGroup>
                                 )
