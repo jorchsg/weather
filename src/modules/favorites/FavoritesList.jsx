@@ -5,7 +5,7 @@ import FavoritesItem from './FavoritesItem';
 
 import { Toast, Container, Row, Col, Form } from 'react-bootstrap';
 
-const Favorites = ({ }) => {
+const FavoritesList = ({ }) => {
 
     // State that storage favorites
     const [favorites, setFavorites] = useState([]);
@@ -104,4 +104,4 @@ const Favorites = ({ }) => {
     )
 }
 
-export default Favorites;
+export default FavoritesList;

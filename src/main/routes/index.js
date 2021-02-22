@@ -2,7 +2,7 @@ import React from 'react';
 
 // Views
 const Weather = React.lazy(() => import("../../modules/weather/Weather"));
-const Favorites = React.lazy(() => import("../../modules/favorites/Favorites"));
+const FavoritesList = React.lazy(() => import("../../modules/favorites/FavoritesList"));
 
 // Declaring Routes
 export const routers = [
@@ -16,6 +16,6 @@ export const routers = [
         path: "/favorites",
         name: "favorites",
         exact: true,
-        component: Favorites
+        component: FavoritesList
     }
 ];
