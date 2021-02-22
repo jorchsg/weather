@@ -10,8 +10,9 @@ const FavoritesList = ({ }) => {
     // State that storage favorites
     const [favorites, setFavorites] = useState([]);
 
-    // State that storag my search
     const [search, setSearch] = useState('');
+
+    const [filteredFavorites, setFilteredFavorites] = useState([]);
 
     // Load Favorites When Page Load
     useEffect(() => {
@@ -32,11 +33,16 @@ const FavoritesList = ({ }) => {
         setFavorites(favoriteSelected);
     }
 
-    // Filter favorite by name in a dynamic way while user is typing
-    const searchFavorite = favorites.filter(favorite => {
-        return favorite.name.toLowerCase().includes(search.toLowerCase())
-    })
+    useEffect(() => {
 
+        // Filter favorite by name in a dynamic way while user is typing
+        setFilteredFavorites(
+            favorites.filter(favorite => {
+                return favorite.name.toLowerCase().includes(search.toLowerCase())
+            })
+        );
+
+    }, [search, favorites])
 
     if (!favorites) return null;
 
@@ -71,7 +77,7 @@ const FavoritesList = ({ }) => {
 
                         <h2 className="mt-3">{title}</h2>
                         {
-                            searchFavorite.map(({ id, name, main, weather }) => {
+                            filteredFavorites.map(({ id, name, main, weather }) => {
                                 return (
                                     <Toast
                                         key={id}
