@@ -41,7 +41,7 @@ const Favorites = ({ }) => {
 
             <Container>
                 <Row>
-                    <Col xs={12} md={6}>
+                    <Col xs={12} md={6} lg={8}>
 
                         <h2 className="mt-3">{title}</h2>
                         {
@@ -55,7 +55,9 @@ const Favorites = ({ }) => {
                                             <small>{weather[0].description}</small>
                                         </Toast.Header>
                                         <Toast.Body>
-                                            <h1 className="text-center">{main.temp} <strong>&#8451;</strong></h1>
+                                            <h1 className="text-center">
+                                                {Math.round(main.temp)}
+                                                <strong> &#8451;</strong></h1>
                                         </Toast.Body>
                                     </Toast>
                                 )

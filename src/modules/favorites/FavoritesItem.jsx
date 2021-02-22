@@ -20,7 +20,8 @@ const FavoritesItem = ({ removeFavorite, favorites }) => {
                             >
                                 <ListGroup.Item>
                                     <h6 className="text-center">Detail</h6>
-                                    <strong>Units: </strong> {main.temp} &#8451;
+                                    <strong>Units: </strong>
+                                    {Math.round(main.temp)} &#8451;
                                     <br></br>
                                     <strong>City: </strong><span>{name}</span>
                                     <Button

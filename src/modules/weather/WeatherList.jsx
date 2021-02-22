@@ -21,7 +21,7 @@ const WeatherList = (props) => {
                             <Card.Body>
                                 <Card.Title
                                     className="text-primary"
-                                >{city.main.temp} &#8451;
+                                >{Math.round(city.main.temp)} &#8451;
                                 </Card.Title>
                                 <Card.Subtitle
                                     className="mb-2 text-muted mb-3 text-dark"

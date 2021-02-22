@@ -25,21 +25,21 @@ const WeatherDetail = ({ city }) => {
                                 </Card.Subtitle>
                                 <Card.Title
                                     className="text-dark"
-                                >{main.temp}  &#8451;
+                                >{Math.round(main.temp)}  &#8451;
                             </Card.Title>
                                 <ListGroup variant="secondary">
                                     <div className="row">
                                         <div className="col-6 col-xs-12">
                                             <ListGroup.Item variant="secondary">
-                                                Max: {main.temp_max} &#8451;
+                                                Max: {Math.round(main.temp_max)} &#8451;
                                             </ListGroup.Item>
                                             <ListGroup.Item variant="secondary">
-                                                Min: {main.temp_min}  &#8451;
+                                                Min: {Math.round(main.temp_min)}  &#8451;
                                             </ListGroup.Item>
                                         </div>
                                         <div className="col-6 col-xs-12">
                                             <ListGroup.Item variant="secondary">
-                                                Humidity: {main.temp_max}%
+                                                Humidity: {Math.round(main.humidity)}%
                                             </ListGroup.Item>
                                             <ListGroup.Item variant="secondary">
                                                 Wind: {main.humidity} mph
